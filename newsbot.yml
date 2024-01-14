@@ -1,0 +1,22 @@
+name: Run main.py every hour
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour at the start of the hour
+
+jobs:
+  run-main:
+    runs-on: ubuntu-latest  
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9  
+      - name: Install dependencies
+        run: pip install -r requirements.txt  
+      - name: Run main.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          DBURL: ${{ secrets.DBURL }}
+        run: python main.py
