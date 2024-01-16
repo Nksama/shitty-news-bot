@@ -1,16 +1,16 @@
-from bs4 import BeautifulSoup
 from requests import get
 
 
 def get_news_data():
-    url = "https://www.livechart.me/feeds/headlines"
-    response = get(url).text
-    soup = BeautifulSoup(response , features="xml")
+    url = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/en-US/stories/search?category=Announcements,News,News&page_size=16&page=1"
+    try:
+        response = get(url).json()
+    except Exception as e:
+        print("AN ERROR OCCURED : {}".format(e))
 
-    item = soup.find("item")
-    title = item.title.text
-    link = item.guid.text
-    img = item.enclosure["url"]
-
+    data = response['stories'][0]['content']
+    title = data['headline']
+    img = data['thumbnail']['filename']
+    urll = response['stories'][0]['slug']
+    link = f"https://crunchyroll.com/news/{urll}"
     return {"title":title , "link" : link , "image" : img , "type" : "news"}
-
