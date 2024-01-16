@@ -6,7 +6,7 @@ def get_news_data():
     try:
         response = get(url).json()
     except Exception as e:
-        print("AN ERROR OCCURED : {}".format(e))
+        print(f"AN ERROR OCCURED : {e}")
 
     data = response['stories'][0]['content']
     title = data['headline']
