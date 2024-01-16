@@ -3,6 +3,8 @@ name: Run main.py every hour
 on:
   schedule:
     - cron: '0 * * * *'  # Runs every hour at the start of the hour
+  push:
+    branches: [main]
 
 jobs:
   run-main:
