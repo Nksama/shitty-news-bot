@@ -26,6 +26,8 @@ def main():
         else:
             db.replace_news(existing , news)
             with bot:
+                text = f"**{news['title']}**\n"
+                btn = [[InlineKeyboardButton("More info" , url=news['link'])]] 
                 bot.send_photo(-1001228391071 , news['image'], text , reply_markup=InlineKeyboardMarkup(btn))
     else:
         db.add_news(news)
