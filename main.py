@@ -12,7 +12,7 @@ bot = Client(
     bot_token=os.environ['BOT_TOKEN']
     )
 
-
+#idk
 
 def main():
 
