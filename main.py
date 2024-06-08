@@ -13,7 +13,7 @@ bot = Client(
     )
 
 #idk
-
+#fkin restart already
 def main():
 
     news = get_news_data()
