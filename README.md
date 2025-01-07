@@ -1,1 +1,1 @@
-# shitty-news-bot..
+# shitty-news-bot
